@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --muted: 210 20% 94%;
+  --muted-foreground: 215 16% 42%;
+  --border: 214 20% 86%;
+  --input: 214 20% 86%;
+  --ring: 199 89% 48%;
+  --primary: 199 89% 38%;
+  --primary-foreground: 0 0% 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar tipis agar tabel padat terasa rapi. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+/* Area cetak: sembunyikan chrome aplikasi, tampilkan hanya konten cetak. */
+@media print {
+  body {
+    background: #ffffff;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .admin-card {
+    @apply rounded-md border border-border bg-card shadow-admin;
+  }
+
+  .admin-button {
+    @apply inline-flex h-8 items-center justify-center gap-2 rounded-md border border-border bg-white px-3 text-xs font-medium text-slate-700 shadow-admin transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .admin-button-primary {
+    @apply border-primary bg-primary text-primary-foreground hover:bg-sky-700;
+  }
+
+  .admin-input {
+    @apply h-8 rounded-md border border-input bg-white px-3 text-xs outline-none ring-0 placeholder:text-slate-400 focus:border-sky-500;
+  }
+
+  .admin-label {
+    @apply text-[11px] font-semibold uppercase tracking-normal text-slate-500;
+  }
+
+  .table-cell {
+    @apply whitespace-nowrap border-b border-border px-3 py-2 text-xs;
+  }
+}
